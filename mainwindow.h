@@ -9,10 +9,22 @@
 #include <QMessageBox>
 #include <QtDebug>
 #include <QByteArray>
+#include <QFileDialog>
+#include <QDir>
+#include <QFile>
+#include <QTime>
 namespace Ui {
 class MainWindow;
 }
-
+struct TData
+{
+    int allP;
+    int newP;
+    double newC;
+    int allowTime;
+    int autoTime;
+    int offTimes;
+};
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -29,6 +41,9 @@ private slots:
     void doProcessSerialReciDataSlot();
     void doProcessPBtnSlot();
     void doProcessRBtnSlot(bool);
+    void doProcessMsgDealSlot();
+    void doProcessSpinBoxValuechangedSlot(int);
+    void doProcessDoubleSBValueChangedSlot(double);
 private:
     void Init();
     void SerialInit();
@@ -42,6 +57,8 @@ private:
     QByteArray ReciArr;
     QByteArray DataArr;
     int rBtnType;
+    TData g_Data;
+
 };
 
 #endif // MAINWINDOW_H
